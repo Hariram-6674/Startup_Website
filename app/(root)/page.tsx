@@ -1,25 +1,17 @@
 import React from "react";
 import SearchBar from "../server_components/SearchBar";
-import StartupCard from "../server_components/StartupCard";
+import StartupCard, { StartupCardType } from "../server_components/StartupCard";
+import { NewStartupsDisplay } from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/live";
 
-export default async function Home({
+export default async function Home({ 
   searchParams,
 }: {
   searchParams: Promise<{ query?: string }>;
 }) {
   const query = (await searchParams).query;
-  const posts = [
-    {
-      _createdAt: new Date(),
-      views: 55,
-      author: { _id: 1 , name:"Adrian"},
-      _id: 1,
-      description: "This is a description",
-      image: "https://via.placeholder.com/600/771796",
-      category: "Robots",
-      title: "We Robots",
-    },
-  ];
+  const params = {search:query || null};
+  const { data: posts } = await sanityFetch({ query: NewStartupsDisplay,params });
   return (
     <>
       <section className="container">
