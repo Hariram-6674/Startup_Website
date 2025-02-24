@@ -1,5 +1,5 @@
 import { SanityLive } from "@/sanity/lib/live";
-import Navbar from "../server_components/Navbar";
+import Navbar from "../../components/server_components/Navbar";
 
 export default function Layout({
   children,
@@ -8,7 +8,7 @@ export default function Layout({
     <main className="font-workSans">
       <Navbar />
       {children}
-      <SanityLive/>
+      <SanityLive />
     </main>
   );
 }

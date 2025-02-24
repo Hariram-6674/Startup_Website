@@ -1,17 +1,22 @@
 import React from "react";
-import SearchBar from "../server_components/SearchBar";
-import StartupCard, { StartupCardType } from "../server_components/StartupCard";
+import SearchBar from "../../components/server_components/SearchBar";
+import StartupCard, {
+  StartupCardType,
+} from "../../components/server_components/StartupCard";
 import { NewStartupsDisplay } from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/live";
 
-export default async function Home({ 
+export default async function Home({
   searchParams,
 }: {
   searchParams: Promise<{ query?: string }>;
 }) {
   const query = (await searchParams).query;
-  const params = {search:query || null};
-  const { data: posts } = await sanityFetch({ query: NewStartupsDisplay,params });
+  const params = { search: query || null };
+  const { data: posts } = await sanityFetch({
+    query: NewStartupsDisplay,
+    params,
+  });
   return (
     <>
       <section className="container">

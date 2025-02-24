@@ -16,3 +16,21 @@ export const NewStartupsDisplay = defineQuery(`*[_type=='startup' && defined(slu
   image,
   category
 }`);
+
+export const Post = defineQuery(`*[_type=='startup' && _id == $id][0]{
+  _id,
+  title,
+  slug,
+  _createdAt,
+  author->{
+    _id,
+    name,
+    image,
+    bio
+  },
+  views,
+  description,
+  image,
+  category,
+  pitch
+}`);
