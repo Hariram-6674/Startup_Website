@@ -34,3 +34,9 @@ export const Post = defineQuery(`*[_type=='startup' && _id == $id][0]{
   category,
   pitch
 }`);
+
+
+export const TotalViews = defineQuery(`*[_type == 'startup' && _id == $id][0]{
+  _id,
+  views
+  }`);
