@@ -9,7 +9,7 @@
         --radius: 0.5rem;
     }
     * {
-        @apply border-[hsl(var(--border))];
+        @apply border-[hsl(var(--border))] outline-[hsl(var(--ring))]/50;
     }
     body {
         @apply bg-[hsl(var(--background))] text-[hsl(var(--foreground))];
@@ -225,5 +225,3 @@
 .w-md-editor-toolbar {
     padding: 10px !important;
 }
-
-

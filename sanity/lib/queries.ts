@@ -40,3 +40,7 @@ export const TotalViews = defineQuery(`*[_type == 'startup' && _id == $id][0]{
   _id,
   views
   }`);
+
+export const AuthorAuth = defineQuery(`*[_type=="author" && id==$id][0]{
+  _id,id,name,email,username,email,bio,image
+  }`);

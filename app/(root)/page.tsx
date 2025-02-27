@@ -5,6 +5,7 @@ import StartupCard, {
 } from "../../components/server_components/StartupCard";
 import { NewStartupsDisplay } from "@/sanity/lib/queries";
 import { sanityFetch } from "@/sanity/lib/live";
+import { auth } from "@/auth";
 
 export default async function Home({
   searchParams,
@@ -17,6 +18,8 @@ export default async function Home({
     query: NewStartupsDisplay,
     params,
   });
+  const session = await auth();
+  console.log(session?.id);
   return (
     <>
       <section className="container">
