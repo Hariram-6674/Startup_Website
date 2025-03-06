@@ -1,5 +1,4 @@
 import { z } from "zod";
-
 export const formSchema = z.object({
     title:z.string().min(3).max(100),
     description:z.string().min(20).max(500),
@@ -8,7 +7,7 @@ export const formSchema = z.object({
         try{
             const res = await fetch(url,{method:"HEAD"});
             const content = res.headers.get("content-type");
-            return content?.startsWith("image/");
+            return content;
         } catch {
             return false;
         }

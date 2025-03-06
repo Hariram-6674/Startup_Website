@@ -1,6 +1,6 @@
 import { formatDate } from "@/lib/utils";
 import { client } from "@/sanity/lib/client";
-import { Post, TotalViews } from "@/sanity/lib/queries";
+import { Post, TotalViews, TopPicks } from "@/sanity/lib/queries";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -9,13 +9,18 @@ import markdownit from "markdown-it";
 import { Skeleton } from "@/components/ui/skeleton";
 import { writeClient } from "@/sanity/lib/write-client";
 import { after } from "next/server";
+import StartupCard, {
+  StartupCardType,
+} from "@/components/server_components/StartupCard";
 
 const md = markdownit();
 
 export const experimental_ppr = true;
 const page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const id = (await params).id;
-  const post = await client.fetch(Post, { id });
+  const [post,{ select: editorPosts }] = await Promise.all([client.fetch(Post, { id }),client.fetch(TopPicks, {
+    slug: "editor-picks",
+  })]);
   const { views: totalviews } = await client
     .withConfig({ useCdn: false })
     .fetch(TotalViews, { id });
@@ -74,7 +79,16 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
           )}
         </div>
         <hr className="divider" />
-        {/* TODO: Recommended posts */}
+        {editorPosts?.length > 0 && (
+          <div className="max-w-4xl mx-auto">
+            <p className="text-30-semibold">Editor Picks</p>
+            <ul className="mt-7 card_grid-sm">
+              {editorPosts.map((post: StartupCardType, index: number) => (
+                <StartupCard key={index} post={post} />
+              ))}
+            </ul>
+          </div>
+        )}
         <Suspense fallback={<Skeleton className="view_skeleton" />}>
           <div className="view-container">
             <div className="absolute -top-1 -right-1">
