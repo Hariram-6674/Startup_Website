@@ -35,3 +35,13 @@ export const createPost = async(state:any, form:FormData, pitch:string) => {
         return parseAction({error:JSON.stringify(error),status:"ERROR"});
     }
 };
+
+export const deletePost = async(id:string) => {
+    try {
+        await writeClient.delete(id);
+        return { success: true };
+      } catch (error) {
+        console.error("Delete error:", error);
+        return { success: false, error: "Failed to delete the document" };
+      }
+};

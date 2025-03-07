@@ -12,19 +12,28 @@ import { after } from "next/server";
 import StartupCard, {
   StartupCardType,
 } from "@/components/server_components/StartupCard";
+import { auth } from "@/auth";
+import { DeleteButton } from "@/components/client_components/ResetButton";
 
 const md = markdownit();
 
 export const experimental_ppr = true;
+
 const page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const id = (await params).id;
-  const [post,{ select: editorPosts }] = await Promise.all([client.fetch(Post, { id }),client.fetch(TopPicks, {
-    slug: "editor-picks",
-  })]);
+  const session = await auth();
+  const [post, { select: editorPosts }] = await Promise.all([
+    client.fetch(Post, { id }),
+    client.fetch(TopPicks, {
+      slug: "editor-picks",
+    }),
+  ]);
   const { views: totalviews } = await client
     .withConfig({ useCdn: false })
     .fetch(TotalViews, { id });
+
   if (!post) return notFound();
+
   const markContent = md.render(post?.pitch || "");
   after(
     async () =>
@@ -33,6 +42,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
         .set({ views: totalviews + 1 })
         .commit(),
   );
+  
   return (
     <>
       <section className="container !min-h-[230px]">
@@ -102,6 +112,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
             </p>
           </div>
         </Suspense>
+        {session?.id === post.author?._id && <DeleteButton id={id} />}
       </section>
     </>
   );
