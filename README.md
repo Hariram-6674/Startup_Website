@@ -21,21 +21,5 @@ A platform for submitting and discovering innovative startup ideas. Users can ex
   <img src="https://github.com/Hariram-6674/Startup_Website/raw/master/images/startify_3.png">
 </div>
 
-
-Live Deployment: [startifydemo-ashy.vercel.app](startifydemo-ashy.vercel.app)
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
+Click here for Live Deployment: [startifydemo-ashy.vercel.app](https://startifydemo-ashy.vercel.app)
