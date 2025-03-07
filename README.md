@@ -1,4 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## ⚡Startify 
+
+A platform for submitting and discovering innovative startup ideas. Users can explore pitches, track their submissions, and engage with a minimalistic, user-friendly interface.
+
+**Tech Stack:** React 19, Next.js 15, Sanity, TailwindCSS, ShadCN, TypeScript, and Zod, all combining to build scalable, dynamic, and highly maintainable web applications with rich user interfaces and robust data validation.
+
+##  Key Features
+
+- **Explore Pitches**: Browse and filter startup ideas by category.
+- **Pitch Details Page**: View descriptions, multimedia, and additional details.
+- **Profile Page**: Track and manage all submitted startup pitches.
+- **Editor Picks**: Highlight top ideas through **"Editor Picks"** in **Sanity Studio**.
+- **View Counter**: Track views on each pitch, offering insight into popularity.
+- **Search Functionality**: Quickly find pitches using category and keyword filters.
+- **Minimalistic UI**: A clean, simple design focused on essential features.
+
+## Images
+<div align="center">
+  <img src="https://github.com/Hariram-6674/Startup_Website/raw/master/images/startify_1.png">
+  <img src="https://github.com/Hariram-6674/Startup_Website/raw/master/images/startify_2.png">
+  <img src="https://github.com/Hariram-6674/Startup_Website/raw/master/images/startify_3.png">
+</div>
+
+
+Live Deployment: [startifydemo-ashy.vercel.app](startifydemo-ashy.vercel.app)
 
 ## Getting Started
 
@@ -15,22 +39,3 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
